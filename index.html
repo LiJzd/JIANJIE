@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="你的名字的个人作品集，展示前端开发、交互设计和品牌视觉项目。">
+    <title>你的名字 | 个人作品集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">作</span>
+        <span>作品集</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#projects">项目</a>
+        <a href="#skills">技能</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="打开导航">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="移动导航">
+      <a href="#projects">项目</a>
+      <a href="#skills">技能</a>
+      <a href="#about">关于</a>
+      <a href="#contact">联系</a>
+    </nav>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <h1>你好，我是你的名字</h1>
+          <p class="hero-lead">把想法做成清晰、好用、好看的数字作品。</p>
+          <p class="hero-text">我关注产品体验、界面细节和前端实现，擅长把模糊需求整理成可以上线的页面、工具和品牌视觉系统。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">查看作品</a>
+            <a class="button secondary" href="#contact">联系我</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="作品集视觉预览">
+          <div class="device-card main-preview">
+            <div class="preview-top">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="preview-hero"></div>
+            <div class="preview-grid">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="floating-note note-one">前端开发</div>
+          <div class="floating-note note-two">交互设计</div>
+          <div class="floating-note note-three">品牌视觉</div>
+        </div>
+      </section>
+
+      <section class="projects section-shell" id="projects">
+        <div class="section-heading">
+          <h2>精选项目</h2>
+          <p>先放上三个可替换的项目卡片。等你给我真实项目，我可以继续帮你换成正式内容和链接。</p>
+        </div>
+        <div class="project-grid" id="project-list"></div>
+      </section>
+
+      <section class="skills section-shell" id="skills">
+        <div class="section-heading compact">
+          <h2>技能方向</h2>
+          <p>从视觉概念到可交付页面，保持体验、结构和实现的一致性。</p>
+        </div>
+        <div class="skill-list" id="skill-list"></div>
+      </section>
+
+      <section class="about section-shell" id="about">
+        <div class="about-copy">
+          <h2>关于我</h2>
+          <p>这里可以写你的背景、专业方向、工作方式和正在寻找的机会。当前文本是占位内容，适合改成更有个人识别度的版本。</p>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+
+      <section class="contact section-shell" id="contact">
+        <div>
+          <h2>一起做点具体的东西</h2>
+          <p>欢迎把项目想法、合作需求或招聘信息发给我。我会尽快回复。</p>
+        </div>
+        <div class="contact-actions" id="contact-actions"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span id="footer-name">你的名字</span>
+      <span>© <span id="year"></span> 个人作品集</span>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,58 @@
+# 个人作品集
+
+一个可直接部署到 GitHub Pages 的静态个人作品集网站。
+
+## 本地预览
+
+直接打开 `index.html`，或运行：
+
+```powershell
+python -m http.server 8000
+```
+
+然后访问：
+
+```text
+http://localhost:8000
+```
+
+## 修改内容
+
+主要内容在 `scripts/main.js`：
+
+- 个人姓名和简介
+- 精选项目
+- 技能方向
+- 经历节点
+- 联系方式
+
+页面结构在 `index.html`，视觉样式在 `styles/main.css`。
+
+## 部署到 GitHub Pages
+
+GitHub 上可以直接上线静态网站的功能叫 **GitHub Pages**。
+
+推荐步骤：
+
+1. 在 GitHub 新建一个仓库。
+2. 把本项目 push 到仓库。
+3. 打开仓库的 `Settings`。
+4. 进入 `Pages`。
+5. `Build and deployment` 选择：
+   - Source: `Deploy from a branch`
+   - Branch: `main`
+   - Folder: `/root`
+6. 保存后等待 GitHub 生成访问地址。
+
+如果仓库名是 `用户名.github.io`，访问地址通常是：
+
+```text
+https://用户名.github.io/
+```
+
+如果仓库名是普通项目名，访问地址通常是：
+
+```text
+https://用户名.github.io/仓库名/
+```
+
