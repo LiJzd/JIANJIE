@@ -150,7 +150,6 @@ const navToggle = document.querySelector(".nav-toggle");
 const mobileNav = document.querySelector("#mobile-nav");
 
 document.title = `${profile.name} | 个人作品集`;
-document.querySelector("#footer-name").textContent = profile.name;
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 const languageColors = {
@@ -181,6 +180,7 @@ const normalizeRepo = (repo, index) => {
   ];
 
   return {
+    id: repo.name,
     title: repo.name,
     summary: enhancement.description || repo.description || "GitHub 公开项目，点击可查看源码、提交记录和项目详情。",
     tags: enhancement.tags || [language, "GitHub", "公开仓库"],
@@ -191,21 +191,32 @@ const normalizeRepo = (repo, index) => {
     forks: repo.forks_count || 0,
     updatedAt: formatDate(repo.pushed_at || repo.updated_at),
     theme: enhancement.theme || fallbackThemes[index % fallbackThemes.length],
+    operation: index === 0 ? "最新更新" : `项目 #${String(index + 1).padStart(2, "0")}`,
   };
 };
+
+let renderedProjects = [];
+
+const projectOffsets = ["#ffb4a8", "#c6c6c7", "#d50000", "#ffffff", "#ffb4a8", "#d50000"];
+const projectSkews = ["-3deg", "3deg", "-2deg", "4deg", "-4deg", "2deg"];
 
 const renderProjects = (repos) => {
   const projects = repos
     .filter((repo) => !repo.archived)
     .sort((a, b) => new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at))
     .map(normalizeRepo);
+  renderedProjects = projects;
 
   projectList.innerHTML = projects
     .map(
-      (project) => `
-      <article class="project-card">
+      (project, index) => `
+      <article
+        class="project-card"
+        data-project-id="${project.id}"
+        style="--project-bg: ${project.theme}; --offset: ${projectOffsets[index % projectOffsets.length]}; --skew: ${projectSkews[index % projectSkews.length]}"
+      >
         <div>
-          <div class="project-art" style="--project-bg: ${project.theme}"></div>
+          <div class="project-art" data-code="${project.operation}"></div>
           <h3>${project.title}</h3>
           <p>${project.summary}</p>
           <div class="project-stats">
@@ -219,13 +230,15 @@ const renderProjects = (repos) => {
           </div>
         </div>
         <div class="project-links">
-          <a class="project-link" href="${project.link}" target="_blank" rel="noreferrer" aria-label="查看 ${project.title} GitHub 仓库">GitHub 仓库</a>
-          ${project.homepage ? `<a class="project-link secondary-link" href="${project.homepage}" target="_blank" rel="noreferrer">在线预览</a>` : ""}
+          <a class="project-link" href="${project.link}" target="_blank" rel="noreferrer" aria-label="查看 ${project.title} GitHub 仓库" data-stop-card>GitHub 仓库</a>
+          ${project.homepage ? `<a class="project-link secondary-link" href="${project.homepage}" target="_blank" rel="noreferrer" data-stop-card>在线预览</a>` : ""}
         </div>
       </article>
     `
     )
     .join("");
+
+  attachProjectCards();
 };
 
 renderProjects(fallbackRepos);
@@ -239,6 +252,51 @@ fetch(`https://api.github.com/users/${githubUser}/repos?per_page=100&sort=update
   .catch(() => {
     renderProjects(fallbackRepos);
   });
+
+const modal = document.querySelector("#project-modal");
+const modalArt = document.querySelector("#modal-art");
+const modalTitle = document.querySelector("#modal-title");
+const modalDescription = document.querySelector("#modal-description");
+const modalTags = document.querySelector("#modal-tags");
+const modalLinks = document.querySelector("#modal-links");
+const modalOperation = document.querySelector("#modal-operation");
+
+function attachProjectCards() {
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("[data-stop-card]")) return;
+      const project = renderedProjects.find((item) => item.id === card.dataset.projectId);
+      if (project) openProjectModal(project);
+    });
+  });
+}
+
+function openProjectModal(project) {
+  modalArt.style.setProperty("--project-bg", project.theme);
+  modalTitle.textContent = project.title;
+  modalDescription.textContent = project.summary;
+  modalOperation.textContent = `PROJECT DETAIL / ${project.language}`;
+  modalTags.innerHTML = project.tags.map((tag) => `<span>${tag}</span>`).join("");
+  modalLinks.innerHTML = `
+    <a class="button primary" href="${project.link}" target="_blank" rel="noreferrer">GitHub 仓库</a>
+    ${project.homepage ? `<a class="button secondary" href="${project.homepage}" target="_blank" rel="noreferrer">在线预览</a>` : ""}
+  `;
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeProjectModal() {
+  modal.hidden = true;
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll("[data-close-modal]").forEach((element) => {
+  element.addEventListener("click", closeProjectModal);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !modal.hidden) closeProjectModal();
+});
 
 skillList.innerHTML = skills
   .map(

@@ -9,6 +9,9 @@
 
 ## 最近完成
 
+- 将网站 UI 调整为参考 `https://github.com/LiJzd/ZUOPINGJI.git` 的黑红高对比、斜切、硬阴影、半调网点风格。
+- 保留正常作品集内容表达：项目、技能、关于、联系；没有迁移 `ZUOPINGJI` 的剧情化“劫案/预告信”项目展示文案。
+- 项目卡片仍从 GitHub 公开仓库动态读取，点击卡片可打开正常“项目详情”弹窗。
 - 从 GitHub 公开仓库接口读取 `LiJzd` 的仓库列表，并把所有公开仓库放进作品区。
 - 作品区现在包含：`JIANJIE`、`Obsidian-LLM-WIKI`、`liangtouwu02`、`paper-agent-pipeline`、`MingChao--IF`、`---`。
 - 为 GitHub API 不可用的情况增加 fallback 仓库数据。
@@ -39,6 +42,9 @@
 
 ## 验证结果
 
+- 使用 Chrome headless 验证桌面视口 `1440x1200` 的 `ZUOPINGJI` 风格 UI。
+- 使用 Chrome headless 验证移动端视口 `390x1000`，修复了小屏首屏文案裁切。
+- 使用 `node --check scripts/main.js` 验证脚本语法。
 - 使用 GitHub API 获取 `LiJzd` 公开仓库列表，返回 6 个仓库。
 - 使用 Chrome headless `--dump-dom` 验证 6 个仓库标题和 GitHub 链接已渲染。
 - `python -m http.server 8000 --bind 127.0.0.1` 本地服务返回 200。
@@ -52,6 +58,7 @@
 - 替换真实邮箱、头像或个人视觉、社交链接。
 - 在 GitHub Pages 中启用 `main` 分支 `/root` 部署。
 - 根据真实项目截图或封面图片替换当前代码生成的项目视觉。
+- 如需更贴近 `ZUOPINGJI`，可继续补充动态背景/按钮动效，但保持项目展示内容正常。
 
 ## 已知问题
 
