@@ -9,6 +9,9 @@
 
 ## 最近完成
 
+- 从 GitHub 公开仓库接口读取 `LiJzd` 的仓库列表，并把所有公开仓库放进作品区。
+- 作品区现在包含：`JIANJIE`、`Obsidian-LLM-WIKI`、`liangtouwu02`、`paper-agent-pipeline`、`MingChao--IF`、`---`。
+- 为 GitHub API 不可用的情况增加 fallback 仓库数据。
 - 创建协作上下文文件：`AGENTS.md`、`HANDOFF.md`、`TODO.md`、`docs/DECISIONS.md`。
 - 创建作品集网站首版：
   - 顶部导航
@@ -36,6 +39,8 @@
 
 ## 验证结果
 
+- 使用 GitHub API 获取 `LiJzd` 公开仓库列表，返回 6 个仓库。
+- 使用 Chrome headless `--dump-dom` 验证 6 个仓库标题和 GitHub 链接已渲染。
 - `python -m http.server 8000 --bind 127.0.0.1` 本地服务返回 200。
 - 使用 Chrome headless 验证桌面视口 `1440x1000`。
 - 使用 Chrome headless 验证移动端视口 `390x844`。
@@ -44,9 +49,9 @@
 
 ## 未完成事项
 
-- 替换占位姓名、邮箱、链接和项目内容。
+- 替换真实邮箱、头像或个人视觉、社交链接。
 - 在 GitHub Pages 中启用 `main` 分支 `/root` 部署。
-- 根据真实作品截图或图片替换当前代码生成的项目视觉。
+- 根据真实项目截图或封面图片替换当前代码生成的项目视觉。
 
 ## 已知问题
 

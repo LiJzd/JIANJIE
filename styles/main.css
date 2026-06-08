@@ -376,6 +376,29 @@ a {
   color: var(--muted);
 }
 
+.project-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.project-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-stats i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
 .project-meta {
   display: flex;
   flex-wrap: wrap;
@@ -395,6 +418,21 @@ a {
   margin-top: 22px;
   color: var(--teal-dark);
   font-weight: 700;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.project-links .project-link {
+  margin-top: 0;
+}
+
+.secondary-link {
+  color: var(--coral);
 }
 
 .skill-list {

@@ -21,10 +21,18 @@ http://localhost:8000
 主要内容在 `scripts/main.js`：
 
 - 个人姓名和简介
-- 精选项目
+- GitHub 公开仓库作品数据
 - 技能方向
 - 经历节点
 - 联系方式
+
+作品区会优先请求：
+
+```text
+https://api.github.com/users/LiJzd/repos?per_page=100&sort=updated
+```
+
+如果网络或 GitHub API 暂时不可用，会使用 `scripts/main.js` 里的 fallback 数据。
 
 页面结构在 `index.html`，视觉样式在 `styles/main.css`。
 
@@ -55,4 +63,3 @@ https://用户名.github.io/
 ```text
 https://用户名.github.io/仓库名/
 ```
-
