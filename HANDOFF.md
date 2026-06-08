@@ -3,8 +3,9 @@
 ## 当前状态
 
 - 项目已初始化为个人作品集静态网站。
-- 当前目录原本为空且不是 Git 仓库，本轮已初始化 Git。
+- 当前目录原本为空且不是 Git 仓库，已初始化 Git 并推送到 GitHub。
 - 网站可通过直接打开 `index.html` 或本地静态服务预览。
+- 远程仓库：`https://github.com/LiJzd/JIANJIE.git`
 
 ## 最近完成
 
@@ -18,6 +19,7 @@
   - 联系区和页脚
 - 增加 GitHub Pages 部署说明。
 - 保存设计概念图到 `assets/concepts/portfolio-concept.png`。
+- 添加远程 `origin` 并推送 `main` 分支。
 
 ## 当前分支 / Commit
 
@@ -43,13 +45,13 @@
 ## 未完成事项
 
 - 替换占位姓名、邮箱、链接和项目内容。
-- 连接真实 GitHub 仓库远程地址后 push。
+- 在 GitHub Pages 中启用 `main` 分支 `/root` 部署。
 - 根据真实作品截图或图片替换当前代码生成的项目视觉。
 
 ## 已知问题
 
 - 当前内容为可编辑占位内容，不代表用户真实经历。
-- 当前没有远程仓库，因此无法 push。
+- GitHub Pages 需要在 GitHub 仓库设置中手动启用。
 
 ## 给下一个 Agent 的提醒
 
