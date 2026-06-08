@@ -85,7 +85,7 @@
         <div class="section-heading heist-heading">
           <div>
             <h2><span>项目</span><strong>展示</strong></h2>
-            <p>自动读取 GitHub 公开仓库，展示近期维护的项目、主要技术栈和仓库链接。</p>
+            <p>从 GitHub 公开仓库中挑选更有代表性的作品展示，补充封面图、技术方向和仓库链接。</p>
           </div>
           <a class="button mini" href="https://github.com/LiJzd" target="_blank" rel="noreferrer">查看 GitHub</a>
         </div>
@@ -111,12 +111,37 @@
       </section>
 
       <section class="contact section-shell" id="contact">
-        <div>
+        <div class="contact-copy">
           <div class="section-code">CONTACT / LINKS</div>
           <h2>联系我</h2>
-          <p>欢迎通过 GitHub 或邮件联系。当前邮箱仍是占位，后续可以替换成你的真实联系方式。</p>
+          <p>有项目想法、课程作业、AI 工具或网站需求，可以先把问题整理成一次简短咨询。当前邮箱仍是占位，后续可以替换成真实联系方式。</p>
+          <div class="contact-actions" id="contact-actions"></div>
         </div>
-        <div class="contact-actions" id="contact-actions"></div>
+        <form class="consult-panel" aria-label="项目咨询表单">
+          <div class="consult-header">
+            <span>咨询入口</span>
+            <strong>01</strong>
+          </div>
+          <label>
+            <span>咨询类型</span>
+            <select aria-label="选择咨询类型">
+              <option>AI 工具 / Agent 工作流</option>
+              <option>作品集 / 网站页面</option>
+              <option>数据分析 / 自动化脚本</option>
+              <option>学习项目 / 论文流程</option>
+            </select>
+          </label>
+          <label>
+            <span>你的称呼</span>
+            <input type="text" placeholder="怎么称呼你？">
+          </label>
+          <label>
+            <span>需求简述</span>
+            <textarea rows="4" placeholder="想做什么、已有资料、希望什么时候完成"></textarea>
+          </label>
+          <p class="consult-status" aria-live="polite"></p>
+          <button class="button primary consult-submit" type="button">生成咨询草稿</button>
+        </form>
       </section>
     </main>
 

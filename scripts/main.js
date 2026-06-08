@@ -7,107 +7,55 @@ const profile = {
 
 const githubUser = "LiJzd";
 
-const fallbackRepos = [
+const selectedProjects = [
   {
-    name: "JIANJIE",
-    description: "个人作品集网站，使用静态 HTML/CSS/JavaScript 构建并部署到 GitHub Pages。",
-    language: "CSS",
-    html_url: "https://github.com/LiJzd/JIANJIE",
-    homepage: "https://lijzd.github.io/JIANJIE/",
-    stargazers_count: 0,
-    forks_count: 0,
-    pushed_at: "2026-06-08T10:46:12Z",
-    updated_at: "2026-06-08T10:46:16Z",
+    repo: "liangtouwu02",
+    title: "智慧养殖监测系统",
+    summary: "面向养殖场景的全栈系统，整合前端看板、后端服务、Python AI 分析与健康预警。",
+    tags: ["AI", "FastAPI", "Spring Boot"],
+    cover: "assets/projects/liangtouwu02-cover.svg",
+    operation: "PROJECT 01",
+    theme: "linear-gradient(135deg, #1a1a1a, #f2efe7)",
   },
   {
-    name: "Obsidian-LLM-WIKI",
-    description: "围绕 Obsidian 和 LLM 构建的知识库/Wiki 工具项目。",
-    language: "JavaScript",
-    html_url: "https://github.com/LiJzd/Obsidian-LLM-WIKI",
-    homepage: null,
-    stargazers_count: 0,
-    forks_count: 0,
-    pushed_at: "2026-06-06T12:15:04Z",
-    updated_at: "2026-06-06T12:15:08Z",
+    repo: "paper-agent-pipeline",
+    title: "论文 Agent Pipeline",
+    summary: "多智能体学术写作流水线，覆盖需求分析、文献检索、写作、润色、PPT 和交付。",
+    tags: ["Agent", "论文工作流", "Python"],
+    cover: "assets/projects/paper-agent-cover.svg",
+    operation: "PROJECT 02",
+    theme: "linear-gradient(135deg, #d50000, #ffded8)",
   },
   {
-    name: "liangtouwu02",
-    description: "智慧农业生猪监测系统，包含前端、后端和 Python AI 服务。",
-    language: "Python",
-    html_url: "https://github.com/LiJzd/liangtouwu02",
-    homepage: null,
-    stargazers_count: 0,
-    forks_count: 1,
-    pushed_at: "2026-06-01T04:22:33Z",
-    updated_at: "2026-06-01T04:22:37Z",
+    repo: "Obsidian-LLM-WIKI",
+    title: "Obsidian LLM Wiki",
+    summary: "围绕 Obsidian 与大模型构建的知识库工具，把笔记、问答和知识整理连接起来。",
+    tags: ["LLM", "Wiki", "知识管理"],
+    cover: "assets/projects/obsidian-llm-cover.svg",
+    operation: "PROJECT 03",
+    theme: "linear-gradient(135deg, #111111, #e8e8e8)",
   },
   {
-    name: "paper-agent-pipeline",
-    description: "适用于 Claude Code 的论文生成工作流，帮助一键生成格式完善的作业论文。",
-    language: "Python",
-    html_url: "https://github.com/LiJzd/paper-agent-pipeline",
-    homepage: null,
-    stargazers_count: 10,
-    forks_count: 1,
-    pushed_at: "2026-05-15T08:48:28Z",
-    updated_at: "2026-05-31T08:27:43Z",
-  },
-  {
-    name: "MingChao--IF",
-    description: "基于大语言模型与 RAG 技术的明朝历史 IF 线模拟引擎。",
-    language: "Python",
-    html_url: "https://github.com/LiJzd/MingChao--IF",
-    homepage: null,
-    stargazers_count: 0,
-    forks_count: 0,
-    pushed_at: "2026-05-01T13:35:01Z",
-    updated_at: "2026-05-01T13:35:05Z",
-  },
-  {
-    name: "---",
-    description: "读题批注工具：在读题过程中选中文字并记录批注和思考。",
-    language: "JavaScript",
-    html_url: "https://github.com/LiJzd/---",
-    homepage: null,
-    stargazers_count: 0,
-    forks_count: 0,
-    pushed_at: "2026-03-04T10:45:37Z",
-    updated_at: "2026-03-04T10:45:41Z",
+    repo: "MingChao--IF",
+    title: "明朝历史 IF 引擎",
+    summary: "基于大语言模型与 RAG 的历史平行推演项目，支持分支剧情、角色档案和知识检索。",
+    tags: ["RAG", "历史推演", "FastAPI"],
+    cover: "assets/projects/mingchao-if-cover.svg",
+    operation: "PROJECT 04",
+    theme: "linear-gradient(135deg, #8f0000, #f6c6ba)",
   },
 ];
 
-const repoEnhancements = {
-  JIANJIE: {
-    description: "个人作品集网站，使用静态 HTML/CSS/JavaScript 构建并部署到 GitHub Pages。",
-    tags: ["Portfolio", "GitHub Pages", "静态网站"],
-    theme: "linear-gradient(135deg, #00a99d, #d9f4ef)",
-  },
-  "Obsidian-LLM-WIKI": {
-    description: "围绕 Obsidian 和 LLM 构建的知识库/Wiki 工具项目。",
-    tags: ["LLM", "Wiki", "知识管理"],
-    theme: "linear-gradient(135deg, #ef6f61, #ffe2dc)",
-  },
-  liangtouwu02: {
-    description: "智慧农业生猪监测系统，包含多智能体对话、数据分析、健康预警和租户隔离。",
-    tags: ["AI", "FastAPI", "Spring Boot"],
-    theme: "linear-gradient(135deg, #222222, #f0ece4)",
-  },
-  "paper-agent-pipeline": {
-    description: "多智能体学术论文自动写作系统，覆盖需求分析、文献搜索、写作、润色、PPT 和交付。",
-    tags: ["Agent", "论文工作流", "Python"],
-    theme: "linear-gradient(135deg, #00a99d, #f7f5f1)",
-  },
-  "MingChao--IF": {
-    description: "基于大语言模型与 RAG 技术的明朝历史平行推演引擎，支持动态分叉和角色档案。",
-    tags: ["RAG", "FastAPI", "历史推演"],
-    theme: "linear-gradient(135deg, #ef6f61, #222222)",
-  },
-  "---": {
-    description: "读题批注工具：在读题过程中选中文字并记录批注和思考。",
-    tags: ["JavaScript", "批注", "学习工具"],
-    theme: "linear-gradient(135deg, #f0be4d, #ffffff)",
-  },
-};
+const fallbackRepos = selectedProjects.map((project, index) => ({
+  name: project.repo,
+  description: project.summary,
+  language: project.tags.at(-1) || "Code",
+  html_url: `https://github.com/LiJzd/${project.repo}`,
+  homepage: project.repo === "JIANJIE" ? "https://lijzd.github.io/JIANJIE/" : null,
+  archived: false,
+  pushed_at: new Date(Date.UTC(2026, 5, 8 - index)).toISOString(),
+  updated_at: new Date(Date.UTC(2026, 5, 8 - index)).toISOString(),
+}));
 
 const skills = [
   {
@@ -128,7 +76,7 @@ const timeline = [
   {
     time: "现在",
     title: "持续迭代 GitHub 公开项目",
-    description: "作品集会同步展示公开仓库，优先呈现近期维护和可链接查看的项目。",
+    description: "作品集只展示更能代表方向的精选项目，其余仓库保留在 GitHub 中继续沉淀。",
   },
   {
     time: "近期",
@@ -162,6 +110,7 @@ const languageColors = {
   Python: "#3572a5",
   TypeScript: "#3178c6",
   HTML: "#ef6f61",
+  Code: "#ffb4a8",
 };
 
 const formatDate = (value) => {
@@ -173,37 +122,35 @@ const formatDate = (value) => {
   }).format(new Date(value));
 };
 
-const normalizeRepo = (repo, index) => {
-  const enhancement = repoEnhancements[repo.name] || {};
-  const language = repo.language || "Code";
-  const fallbackThemes = [
-    "linear-gradient(135deg, #00a99d, #d9f4ef)",
-    "linear-gradient(135deg, #ef6f61, #ffe2dc)",
-    "linear-gradient(135deg, #222222, #f0ece4)",
-    "linear-gradient(135deg, #f0be4d, #ffffff)",
-  ];
+const repoByName = (repos) =>
+  repos.reduce((lookup, repo) => {
+    lookup[repo.name] = repo;
+    return lookup;
+  }, {});
+
+const normalizeProject = (project, repo, index) => {
+  const language = repo?.language || fallbackRepos[index]?.language || "Code";
 
   return {
-    id: repo.name,
-    title: repo.name,
-    summary: enhancement.description || repo.description || "GitHub 公开项目，点击可查看源码、提交记录和项目详情。",
-    tags: enhancement.tags || [language, "GitHub", "公开仓库"],
-    link: repo.html_url,
-    homepage: repo.homepage,
+    id: project.repo,
+    title: project.title,
+    summary: project.summary,
+    tags: project.tags,
+    cover: project.cover,
+    link: repo?.html_url || `https://github.com/${githubUser}/${project.repo}`,
+    homepage: repo?.homepage || null,
     language,
-    stars: repo.stargazers_count || 0,
-    forks: repo.forks_count || 0,
-    updatedAt: formatDate(repo.pushed_at || repo.updated_at),
-    theme: enhancement.theme || fallbackThemes[index % fallbackThemes.length],
-    operation: index === 0 ? "最新更新" : `项目 #${String(index + 1).padStart(2, "0")}`,
+    updatedAt: formatDate(repo?.pushed_at || repo?.updated_at || fallbackRepos[index]?.updated_at),
+    theme: project.theme,
+    operation: project.operation,
   };
 };
 
 let renderedProjects = [];
 let revealObserver;
 
-const projectOffsets = ["#ffb4a8", "#c6c6c7", "#d50000", "#ffffff", "#ffb4a8", "#d50000"];
-const projectSkews = ["-3deg", "3deg", "-2deg", "4deg", "-4deg", "2deg"];
+const projectOffsets = ["#ffb4a8", "#c6c6c7", "#d50000", "#ffffff"];
+const projectSkews = ["-3deg", "3deg", "-2deg", "4deg"];
 
 function registerRevealTargets(targets) {
   if (!revealObserver) return;
@@ -217,10 +164,10 @@ function registerRevealTargets(targets) {
 }
 
 const renderProjects = (repos) => {
-  const projects = repos
-    .filter((repo) => !repo.archived)
-    .sort((a, b) => new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at))
-    .map(normalizeRepo);
+  const availableRepos = repoByName(repos.filter((repo) => !repo.archived));
+  const projects = selectedProjects.map((project, index) =>
+    normalizeProject(project, availableRepos[project.repo], index)
+  );
   renderedProjects = projects;
 
   projectList.innerHTML = projects
@@ -232,13 +179,13 @@ const renderProjects = (repos) => {
         style="--project-bg: ${project.theme}; --offset: ${projectOffsets[index % projectOffsets.length]}; --skew: ${projectSkews[index % projectSkews.length]}"
       >
         <div>
-          <div class="project-art" data-code="${project.operation}"></div>
+          <figure class="project-art" data-code="${project.operation}">
+            <img src="${project.cover}" alt="${project.title} 项目封面" loading="lazy">
+          </figure>
           <h3>${project.title}</h3>
           <p>${project.summary}</p>
-          <div class="project-stats">
+          <div class="project-stats" aria-label="项目技术和更新时间">
             <span><i style="--dot: ${languageColors[project.language] || "#686868"}"></i>${project.language}</span>
-            <span>★ ${project.stars}</span>
-            <span>⑂ ${project.forks}</span>
             <span>${project.updatedAt}</span>
           </div>
           <div class="project-meta">
@@ -290,6 +237,7 @@ function attachProjectCards() {
 
 function openProjectModal(project) {
   modalArt.style.setProperty("--project-bg", project.theme);
+  modalArt.innerHTML = `<img src="${project.cover}" alt="${project.title} 项目封面">`;
   modalTitle.textContent = project.title;
   modalDescription.textContent = project.summary;
   modalOperation.textContent = `PROJECT DETAIL / ${project.language}`;
@@ -304,6 +252,7 @@ function openProjectModal(project) {
 
 function closeProjectModal() {
   modal.hidden = true;
+  modalArt.innerHTML = "";
   document.body.style.overflow = "";
 }
 
@@ -346,6 +295,22 @@ contactActions.innerHTML = `
   <a class="button secondary" href="${profile.resume}">简历</a>
 `;
 
+const consultPanel = document.querySelector(".consult-panel");
+const consultSubmit = document.querySelector(".consult-submit");
+const consultStatus = document.querySelector(".consult-status");
+const mailLink = contactActions.querySelector('a[href^="mailto:"]');
+
+consultSubmit.addEventListener("click", () => {
+  const type = consultPanel.querySelector("select").value;
+  const name = consultPanel.querySelector("input").value.trim() || "未填写称呼";
+  const brief = consultPanel.querySelector("textarea").value.trim() || "我想咨询一个项目需求。";
+  const subject = `项目咨询：${type}`;
+  const body = [`称呼：${name}`, `咨询类型：${type}`, "", "需求简述：", brief].join("\n");
+
+  mailLink.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  consultStatus.textContent = "咨询草稿已生成，可以点击左侧“发送邮件”。";
+});
+
 navToggle.addEventListener("click", () => {
   const isOpen = mobileNav.classList.toggle("open");
   navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -358,33 +323,25 @@ mobileNav.addEventListener("click", (event) => {
   }
 });
 
-const updateScrollEffects = () => {
-  const scrollMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-  const progress = Math.min(1, Math.max(0, window.scrollY / scrollMax));
-  document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
-  document.documentElement.style.setProperty("--scroll-px", `${Math.round(window.scrollY)}px`);
-};
-
 const setActiveKey = (id) => {
   sectionKeys.forEach((key) => {
     key.classList.toggle("active", key.dataset.sectionKey === id);
   });
 };
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!visible) return;
-    const id = visible.target.id || "top";
-    setActiveKey(id);
-  },
-  {
-    rootMargin: "-34% 0px -45% 0px",
-    threshold: [0.12, 0.3, 0.6],
-  }
-);
+const updateScrollEffects = () => {
+  const scrollMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const progress = Math.min(1, Math.max(0, window.scrollY / scrollMax));
+  const probeY = window.scrollY + window.innerHeight * 0.46;
+  const current = trackedSections.reduce((active, section) => {
+    const sectionTop = section.id === "top" ? 0 : section.offsetTop;
+    return probeY >= sectionTop ? section : active;
+  }, trackedSections[0]);
+
+  document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
+  document.documentElement.style.setProperty("--scroll-px", `${Math.round(window.scrollY)}px`);
+  setActiveKey(current?.id || "top");
+};
 
 revealObserver = new IntersectionObserver(
   (entries) => {
@@ -401,7 +358,6 @@ revealObserver = new IntersectionObserver(
   }
 );
 
-trackedSections.forEach((section) => sectionObserver.observe(section));
 registerRevealTargets(document.querySelectorAll(".hero-copy, .hero-visual, .section-heading, .skill-item, .about-copy, .timeline li, .contact"));
 registerRevealTargets(document.querySelectorAll(".project-card"));
 updateScrollEffects();
@@ -410,6 +366,7 @@ window.addEventListener("scroll", updateScrollEffects, { passive: true });
 window.addEventListener("resize", updateScrollEffects);
 
 window.addEventListener("load", () => {
+  updateScrollEffects();
   if (!window.location.hash) return;
   const target = document.querySelector(window.location.hash);
   if (!target) return;

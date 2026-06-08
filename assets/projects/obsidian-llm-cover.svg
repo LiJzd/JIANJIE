@@ -1,0 +1,36 @@
+<svg width="960" height="720" viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Obsidian LLM Wiki project cover</title>
+  <desc id="desc">An abstract knowledge graph and note cards in a heist poster style.</desc>
+  <defs>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop stop-color="#ffb4a8" stop-opacity=".46"/>
+      <stop offset=".48" stop-color="#d50000" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#111" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="720" fill="#111"/>
+  <rect width="960" height="720" fill="url(#glow)"/>
+  <path d="M50 92h860v540H50z" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="30 18"/>
+  <path d="M-70 472 1020 112v94L-70 592Z" fill="#d50000"/>
+  <g stroke="#fff" stroke-width="10" opacity=".9">
+    <path d="M286 246 472 174 660 280 590 486 372 504Z" fill="none"/>
+    <path d="M286 246 590 486M472 174 372 504M660 280 372 504"/>
+  </g>
+  <g stroke="#000" stroke-width="10">
+    <circle cx="286" cy="246" r="52" fill="#ffb4a8"/>
+    <circle cx="472" cy="174" r="52" fill="#fff"/>
+    <circle cx="660" cy="280" r="52" fill="#d50000"/>
+    <circle cx="590" cy="486" r="52" fill="#ffb4a8"/>
+    <circle cx="372" cy="504" r="52" fill="#fff"/>
+  </g>
+  <g transform="translate(142 424) rotate(-8)">
+    <rect width="236" height="142" fill="#f2efe7" stroke="#000" stroke-width="10"/>
+    <rect x="32" y="34" width="172" height="16" fill="#111"/>
+    <rect x="32" y="74" width="118" height="14" fill="#d50000"/>
+  </g>
+  <g transform="translate(634 104) rotate(9)">
+    <rect width="204" height="132" fill="#111" stroke="#000" stroke-width="10"/>
+    <rect x="28" y="32" width="148" height="14" fill="#fff"/>
+    <rect x="28" y="70" width="106" height="14" fill="#ffb4a8"/>
+  </g>
+</svg>

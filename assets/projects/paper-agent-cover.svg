@@ -1,0 +1,34 @@
+<svg width="960" height="720" viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Paper agent pipeline project cover</title>
+  <desc id="desc">A high contrast abstract pipeline of papers and agent nodes.</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0v32" fill="none" stroke="#fff" stroke-width="2" opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="720" fill="#171717"/>
+  <rect width="960" height="720" fill="url(#grid)"/>
+  <path d="M-40 200 980 18v104L-40 306Z" fill="#fff"/>
+  <path d="M-40 530 990 178v146L-40 690Z" fill="#d50000"/>
+  <g transform="translate(118 112) rotate(-5)">
+    <rect x="0" y="0" width="264" height="344" fill="#f2efe7" stroke="#000" stroke-width="12"/>
+    <rect x="38" y="58" width="188" height="18" fill="#111"/>
+    <rect x="38" y="110" width="150" height="14" fill="#d50000"/>
+    <rect x="38" y="154" width="198" height="14" fill="#111"/>
+    <rect x="38" y="198" width="168" height="14" fill="#111"/>
+    <rect x="38" y="242" width="198" height="14" fill="#d50000"/>
+  </g>
+  <g transform="translate(356 210)">
+    <circle cx="82" cy="78" r="58" fill="#ffb4a8" stroke="#000" stroke-width="10"/>
+    <circle cx="254" cy="78" r="58" fill="#fff" stroke="#000" stroke-width="10"/>
+    <circle cx="426" cy="78" r="58" fill="#d50000" stroke="#000" stroke-width="10"/>
+    <path d="M142 78h52M314 78h52" stroke="#000" stroke-width="16"/>
+    <path d="M82 160v92h344v-92" fill="none" stroke="#fff" stroke-width="14" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(574 340) rotate(7)">
+    <rect x="0" y="0" width="248" height="214" fill="#111" stroke="#000" stroke-width="12"/>
+    <rect x="36" y="40" width="176" height="26" fill="#fff"/>
+    <rect x="36" y="94" width="116" height="20" fill="#ffb4a8"/>
+    <rect x="36" y="142" width="176" height="20" fill="#d50000"/>
+  </g>
+</svg>
