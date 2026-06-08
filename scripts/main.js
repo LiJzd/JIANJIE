@@ -148,6 +148,10 @@ const timelineList = document.querySelector("#timeline");
 const contactActions = document.querySelector("#contact-actions");
 const navToggle = document.querySelector(".nav-toggle");
 const mobileNav = document.querySelector("#mobile-nav");
+const sectionKeys = document.querySelectorAll(".section-key");
+const trackedSections = ["top", "projects", "skills", "about", "contact"]
+  .map((id) => document.querySelector(id === "top" ? "main" : `#${id}`))
+  .filter(Boolean);
 
 document.title = `${profile.name} | 个人作品集`;
 document.querySelector("#year").textContent = new Date().getFullYear();
@@ -196,9 +200,21 @@ const normalizeRepo = (repo, index) => {
 };
 
 let renderedProjects = [];
+let revealObserver;
 
 const projectOffsets = ["#ffb4a8", "#c6c6c7", "#d50000", "#ffffff", "#ffb4a8", "#d50000"];
 const projectSkews = ["-3deg", "3deg", "-2deg", "4deg", "-4deg", "2deg"];
+
+function registerRevealTargets(targets) {
+  if (!revealObserver) return;
+  targets.forEach((target, index) => {
+    if (target.dataset.revealReady) return;
+    target.dataset.revealReady = "true";
+    target.classList.add("scroll-reveal");
+    target.style.transitionDelay = `${Math.min(index * 55, 220)}ms`;
+    revealObserver.observe(target);
+  });
+}
 
 const renderProjects = (repos) => {
   const projects = repos
@@ -269,6 +285,7 @@ function attachProjectCards() {
       if (project) openProjectModal(project);
     });
   });
+  registerRevealTargets(document.querySelectorAll(".project-card"));
 }
 
 function openProjectModal(project) {
@@ -339,4 +356,65 @@ mobileNav.addEventListener("click", (event) => {
     mobileNav.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
   }
+});
+
+const updateScrollEffects = () => {
+  const scrollMax = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const progress = Math.min(1, Math.max(0, window.scrollY / scrollMax));
+  document.documentElement.style.setProperty("--scroll-progress", progress.toFixed(4));
+  document.documentElement.style.setProperty("--scroll-px", `${Math.round(window.scrollY)}px`);
+};
+
+const setActiveKey = (id) => {
+  sectionKeys.forEach((key) => {
+    key.classList.toggle("active", key.dataset.sectionKey === id);
+  });
+};
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (!visible) return;
+    const id = visible.target.id || "top";
+    setActiveKey(id);
+  },
+  {
+    rootMargin: "-34% 0px -45% 0px",
+    threshold: [0.12, 0.3, 0.6],
+  }
+);
+
+revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    rootMargin: "0px 0px -12% 0px",
+    threshold: 0.14,
+  }
+);
+
+trackedSections.forEach((section) => sectionObserver.observe(section));
+registerRevealTargets(document.querySelectorAll(".hero-copy, .hero-visual, .section-heading, .skill-item, .about-copy, .timeline li, .contact"));
+registerRevealTargets(document.querySelectorAll(".project-card"));
+updateScrollEffects();
+
+window.addEventListener("scroll", updateScrollEffects, { passive: true });
+window.addEventListener("resize", updateScrollEffects);
+
+window.addEventListener("load", () => {
+  if (!window.location.hash) return;
+  const target = document.querySelector(window.location.hash);
+  if (!target) return;
+  setTimeout(() => {
+    target.scrollIntoView({ block: "start" });
+    updateScrollEffects();
+  }, 120);
 });
