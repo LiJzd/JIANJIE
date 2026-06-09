@@ -116,11 +116,14 @@ if (introSequence) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     introSequence.remove();
   } else {
-    const queueIntroRemoval = () => window.setTimeout(removeIntro, 5600);
+    const startIntro = () => {
+      introSequence.classList.add("intro-ready");
+      window.setTimeout(removeIntro, 6350);
+    };
     if (document.readyState === "complete") {
-      queueIntroRemoval();
+      window.requestAnimationFrame(startIntro);
     } else {
-      window.addEventListener("load", queueIntroRemoval, { once: true });
+      window.addEventListener("load", () => window.requestAnimationFrame(startIntro), { once: true });
     }
     skipIntro.addEventListener("click", removeIntro);
   }

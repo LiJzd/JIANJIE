@@ -9,9 +9,10 @@
 
 ## 最近完成
 
-- 将上一版蓝黑斜切开场重做为原创红黑幕布主题开场：上下幕布闭合、绳索下拉、幕布拉开、显示“欢迎来到作品集”、欢迎语淡去、水幕/涟漪转场、进入首页。
-- 新增退场后的固定红黑水波幕布背景层 `curtain-water-bg`，使用原生 CSS 径向涟漪、横向水纹和随滚动变化的暗红光带，不引入动画库或 P3R 官方素材。
-- 保留 `SKIP` 跳过按钮和 `prefers-reduced-motion: reduce` 兜底；移动端水幕阶段已修正 `SKIP` 层级，确保可见且可点击。
+- 按用户反馈重做开场质感：新增生成位图资产 `assets/intro/stage-curtain-closed.png`，用真实红黑剧场幕布纹理替代纯 CSS 幕布。
+- 开场结构改为左右两片幕布从中线向两侧拉开，绳索只作为拉幕触发动作；取消上一版上下幕布和水波转场，改为暗红舞台显现、欢迎语停留和红黑扫光退场。
+- 开场动画改为页面 `load` 后由 JS 添加 `intro-ready` 才启动，确保初始画面稳定停在闭合幕布，而不是资源加载时动画已经跑完。
+- 保留 `SKIP` 跳过按钮和 `prefers-reduced-motion: reduce` 兜底；移动端扫光阶段已确认按钮可见且可点击。
 - 将联系邮箱从占位 `hello@example.com` 替换为用户提供的 `ljjjzd@qq.com`，联系区文案、发送邮件按钮和咨询草稿 `mailto` 均使用新邮箱。
 - 开场动画退场计时改为页面 `load` 后启动，避免字体/网络请求较慢时过早退场；系统 `prefers-reduced-motion: reduce` 时直接移除开场层。
 - 按用户反馈将作品区从“展示所有公开仓库”改为“精选 4 个代表项目”：`liangtouwu02`、`paper-agent-pipeline`、`Obsidian-LLM-WIKI`、`MingChao--IF`。
@@ -58,12 +59,12 @@
 
 ## 验证结果
 
-- 使用 Browser 插件和 Codex 运行时 Playwright/Chromium 验证 `http://127.0.0.1:8010/`：桌面 `1440x1000` 下可见红黑幕布、绳索拉幕、欢迎语、水幕转场，自动退场后首页可见，控制台无 error/warn。
-- 使用 Playwright/Chromium 验证 `SKIP`：桌面和移动端均可提前移除开场层；移动端水幕阶段 `SKIP` 为最上层命中元素。
-- 使用 Playwright/Chromium 移动端视口 `390x1000` 验证：幕布、水幕和 `SKIP` 无横向溢出，`scrollWidth` 等于视口宽度。
-- 使用 Playwright/Chromium 验证 `prefers-reduced-motion: reduce`：开场层直接移除，首页可见。
-- 回归验证：邮箱仍为 `ljjjzd@qq.com`；作品区仍渲染 4 个精选项目和 4 张封面；滚动到 `projects`/`skills`/`about`/`contact` 时右侧琴键导航 active key 正确变化。
-- 本轮截图位于系统临时目录：`C:\Users\lost\AppData\Local\Temp\portfolio-curtain-closed.png`、`portfolio-curtain-welcome.png`、`portfolio-curtain-water.png`、`portfolio-curtain-after.png`、`portfolio-curtain-mobile-water-fixed.png`。
+- 使用生成图像工具生成红黑剧场幕布资产，并复制到项目内 `assets/intro/stage-curtain-closed.png`；原始生成文件仍保留在 Codex 默认生成目录。
+- 使用 Playwright/Chromium 验证 `http://127.0.0.1:8011/`：初始幕布闭合时左右幕布 `transform: none`，拉幕后左幕布右边缘约 68px、右幕布左边缘约 1372px，确认为向两侧打开。
+- 使用 Playwright/Chromium 时间线验证：欢迎语 “欢迎来到作品集” 在约 3.1s 达到 `opacity: 1`，扫光退场在欢迎语淡出后接入，约 7s 后开场 DOM 移除并显示首页。
+- 使用 Playwright/Chromium 移动端视口 `390x1000` 验证：左右幕布退到两侧，欢迎语宽度约 345px，无横向溢出，`SKIP` 可见且为最上层命中元素。
+- 使用 Playwright/Chromium 回归验证：`SKIP` 可提前移除开场层；`prefers-reduced-motion: reduce` 时首页直接可见；邮箱仍为 `ljjjzd@qq.com`；作品区仍为 4 个精选项目和 4 张封面；无 star/fork 文本；右侧琴键导航随 `projects`/`skills`/`about`/`contact` 正确变化。
+- 本轮截图位于系统临时目录：`C:\Users\lost\AppData\Local\Temp\portfolio-side-curtain-closed.png`、`portfolio-side-curtain-opening.png`、`portfolio-side-curtain-welcome-fixed.png`、`portfolio-side-curtain-sweep.png`、`portfolio-side-curtain-mobile-welcome-fixed.png`。
 - 使用 Web 读取 P3R 官网参考，确认其首屏包含前置短句和主视觉开场结构，本轮只借鉴节奏与视觉语言，不迁移官网素材。
 - 使用 `node --check scripts/main.js` 验证脚本语法。
 - 使用 Browser 插件验证 `http://127.0.0.1:8010/`：开场层出现，中段标题可见，5 秒后自动移除，首页可见，SKIP 按钮可提前移除开场层，控制台无 error/warn。
