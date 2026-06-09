@@ -1,6 +1,6 @@
 const profile = {
   name: "LiJzd",
-  email: "hello@example.com",
+  email: "ljjjzd@qq.com",
   github: "https://github.com/LiJzd",
   resume: "#",
 };
@@ -97,12 +97,34 @@ const contactActions = document.querySelector("#contact-actions");
 const navToggle = document.querySelector(".nav-toggle");
 const mobileNav = document.querySelector("#mobile-nav");
 const sectionKeys = document.querySelectorAll(".section-key");
+const introSequence = document.querySelector("#intro-sequence");
+const skipIntro = document.querySelector("[data-skip-intro]");
 const trackedSections = ["top", "projects", "skills", "about", "contact"]
   .map((id) => document.querySelector(id === "top" ? "main" : `#${id}`))
   .filter(Boolean);
 
 document.title = `${profile.name} | 个人作品集`;
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+const removeIntro = () => {
+  if (!introSequence) return;
+  introSequence.classList.add("intro-dismissing");
+  window.setTimeout(() => introSequence.remove(), 700);
+};
+
+if (introSequence) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    introSequence.remove();
+  } else {
+    const queueIntroRemoval = () => window.setTimeout(removeIntro, 4400);
+    if (document.readyState === "complete") {
+      queueIntroRemoval();
+    } else {
+      window.addEventListener("load", queueIntroRemoval, { once: true });
+    }
+    skipIntro.addEventListener("click", removeIntro);
+  }
+}
 
 const languageColors = {
   CSS: "#00a99d",

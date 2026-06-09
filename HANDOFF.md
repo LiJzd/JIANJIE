@@ -9,6 +9,9 @@
 
 ## 最近完成
 
+- 将联系邮箱从占位 `hello@example.com` 替换为用户提供的 `ljjjzd@qq.com`，联系区文案、发送邮件按钮和咨询草稿 `mailto` 均使用新邮箱。
+- 参考 `https://asia.sega.com/p3r/cn/` 的开场节奏与蓝黑高对比视觉，新增原创全屏开场动画：斜切切片、扫描圆环、倒计时、标题闪入、自动退场和 SKIP 按钮。
+- 开场动画退场计时改为页面 `load` 后启动，避免字体/网络请求较慢时过早退场；系统 `prefers-reduced-motion: reduce` 时直接移除开场层。
 - 按用户反馈将作品区从“展示所有公开仓库”改为“精选 4 个代表项目”：`liangtouwu02`、`paper-agent-pipeline`、`Obsidian-LLM-WIKI`、`MingChao--IF`。
 - 移除作品卡片中的 GitHub 星标数量和 fork 数量，仅保留主要语言与更新时间。
 - 新增 4 张项目封面视觉资产到 `assets/projects/`，项目卡片和详情弹窗都会显示封面图。
@@ -53,6 +56,13 @@
 
 ## 验证结果
 
+- 使用 Web 读取 P3R 官网参考，确认其首屏包含前置短句和主视觉开场结构，本轮只借鉴节奏与视觉语言，不迁移官网素材。
+- 使用 `node --check scripts/main.js` 验证脚本语法。
+- 使用 Browser 插件验证 `http://127.0.0.1:8010/`：开场层出现，中段标题可见，5 秒后自动移除，首页可见，SKIP 按钮可提前移除开场层，控制台无 error/warn。
+- 使用 Browser 插件验证邮箱：页面文本包含 `ljjjzd@qq.com`，发送邮件按钮初始 `href` 为 `mailto:ljjjzd@qq.com`。
+- 使用 Browser 插件临时移动端视口 `390x1000` 验证：开场层和 SKIP 可见，无横向溢出。
+- 使用 Codex 运行时 Playwright/Chromium 保存截图并复核：桌面开场中段 `portfolio-intro-frame-live.png`、退场后首页 `portfolio-after-intro.png`、移动端开场 `portfolio-intro-mobile.png`。
+- 使用 Playwright/Chromium 验证 `prefers-reduced-motion: reduce`：开场层直接移除，首页可见。
 - 使用 `node --check scripts/main.js` 验证脚本语法。
 - 使用 Browser 插件打开 `http://127.0.0.1:8010/` 验证页面标题、非空渲染、4 个项目卡片、4 张项目图片、无星标文本、咨询面板可见、控制台无 error/warn。
 - Browser 插件当前无法通过自动化滚轮/锚点改变 `scrollY`，本轮使用 Codex 运行时 Playwright/Chromium 作为滚动交互验证 fallback。
@@ -71,11 +81,11 @@
 - 使用 Chrome headless 验证桌面视口 `1440x1000`。
 - 使用 Chrome headless 验证移动端视口 `390x844`。
 - 已检查首屏、下一节露出、移动端断行、项目/技能/联系区域结构。
-- 本轮截图验证文件位于系统临时目录：`C:\Users\lost\AppData\Local\Temp\portfolio-desktop.png`、`portfolio-projects-3.png`、`portfolio-contact-2.png`、`portfolio-mobile.png`。
+- 本轮截图验证文件位于系统临时目录：`C:\Users\lost\AppData\Local\Temp\portfolio-intro-frame-live.png`、`portfolio-after-intro.png`、`portfolio-intro-mobile.png`，以及上一轮 `portfolio-desktop.png`、`portfolio-projects-3.png`、`portfolio-contact-2.png`、`portfolio-mobile.png`。
 
 ## 未完成事项
 
-- 替换真实邮箱、头像或个人视觉、社交链接。
+- 替换头像或个人视觉、社交链接。
 - 在 GitHub Pages 中启用 `main` 分支 `/root` 部署。
 - 根据真实项目截图替换当前生成的项目封面视觉。
 - 如需更贴近 `ZUOPINGJI`，可继续补充更复杂的 WebGL/Shader 背景，但保持项目展示内容正常。
