@@ -116,7 +116,7 @@ if (introSequence) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     introSequence.remove();
   } else {
-    const queueIntroRemoval = () => window.setTimeout(removeIntro, 4400);
+    const queueIntroRemoval = () => window.setTimeout(removeIntro, 5600);
     if (document.readyState === "complete") {
       queueIntroRemoval();
     } else {
