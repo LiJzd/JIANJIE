@@ -109,7 +109,7 @@ document.querySelector("#year").textContent = new Date().getFullYear();
 const removeIntro = () => {
   if (!introSequence) return;
   introSequence.classList.add("intro-dismissing");
-  window.setTimeout(() => introSequence.remove(), 700);
+  window.setTimeout(() => introSequence.remove(), 2000);
 };
 
 if (introSequence) {
@@ -118,7 +118,7 @@ if (introSequence) {
   } else {
     const startIntro = () => {
       introSequence.classList.add("intro-ready");
-      window.setTimeout(removeIntro, 6350);
+      window.setTimeout(removeIntro, 4000);
     };
     if (document.readyState === "complete") {
       window.requestAnimationFrame(startIntro);
